@@ -1,5 +1,7 @@
 var HomePage = require('../Pages/Home.page.js');
 var Careers = require('../Pages/Careers.page.js');
+var Base = require('../Utilities/Base.js');
+
 
 
 describe('Test Suite for Hobsons', function() { 
@@ -8,8 +10,7 @@ describe('Test Suite for Hobsons', function() {
     
     beforeEach(function () {
         browser.ignoreSynchronization = true;
-        browser.get('https://www.hobsons.com/');
-        //HomePage.cookieNotice.click();
+        browser.get(Base.homeUrl);
         browser.sleep(1000);
     })
 
@@ -99,7 +100,6 @@ describe('Test Suite for Hobsons', function() {
         browser.executeScript('arguments[0].scrollIntoView();',HomePage.bottomPage).then(function(){
             HomePage.careers.click();
         })
-        //browser.actions().mouseMove(HomePage.rightArrow).perform();
         Careers.locations.getText().then(function (locations) {
             console.log(locations);
         })
