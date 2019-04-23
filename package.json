@@ -1,0 +1,19 @@
+{
+  "name": "sampleframework",
+  "version": "1.0.0",
+  "description": "This is a SampleFramework",
+  "main": "index.js",
+  "scripts": {
+    "test": "protractor conf.js"
+  },
+  "keywords": [
+    "protractor"
+  ],
+  "author": "Batuhan",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-spec-reporter": "^4.2.1",
+    "protractor": "^5.4.2",
+    "protractor-beautiful-reporter": "^1.2.5"
+  }
+}
