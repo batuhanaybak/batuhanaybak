@@ -9,6 +9,7 @@ describe('Test Suite for Hobsons', function() {
     //every it block refers to a Test case
     
     beforeEach(function () {
+        
         browser.ignoreSynchronization = true;
         browser.get(Base.homeUrl);
         browser.sleep(1000);
