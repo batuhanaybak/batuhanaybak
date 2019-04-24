@@ -3,7 +3,6 @@ var Careers = require('../Pages/Careers.page.js');
 var Base = require('../Utilities/Base.js');
 
 
-
 describe('Test Suite for Hobsons', function() { 
 
     //every it block refers to a Test case
@@ -15,6 +14,7 @@ describe('Test Suite for Hobsons', function() {
         browser.sleep(1000);
     })
 
+ 
     
     it('should check the title', function() {
         expect(HomePage.logo.isDisplayed()).toBe(true);
@@ -47,7 +47,6 @@ describe('Test Suite for Hobsons', function() {
         });
     });
 
-    // Right scroll under Learn More
     it('should click Top Right arrow and confirm scrolling ', function() { 
         
 
@@ -60,7 +59,6 @@ describe('Test Suite for Hobsons', function() {
         
     });
 
-    // Left scroll under Learn More
     it('should click Top Left arrow to confirm scrolling ', function() { 
 
         browser.executeScript('arguments[0].scrollIntoView();',HomePage.learnMore).then(function(){
@@ -69,10 +67,8 @@ describe('Test Suite for Hobsons', function() {
             expect( (HomePage.leftTopBox).isDisplayed() ).toBe(true);
         })
 
-        
     });
 
-    // Right scroll under Resources
     it('should click Bottom Right arrow to confirm scrolling ', function() { 
 
         browser.executeScript('arguments[0].scrollIntoView();',HomePage.resourcesBottom).then(function(){
@@ -84,7 +80,6 @@ describe('Test Suite for Hobsons', function() {
         
     });
 
-     // Left scroll under Resources
     it('should click Bottom Left arrow to confirm scrolling ', function() { 
 
         browser.executeScript('arguments[0].scrollIntoView();',HomePage.resourcesBottom).then(function(){
@@ -96,15 +91,39 @@ describe('Test Suite for Hobsons', function() {
         
     });
 
-    it('should click Careers and get compare the locations with expected', function() { 
+    it('should click Careers and log the locations', function() { 
 
         browser.executeScript('arguments[0].scrollIntoView();',HomePage.bottomPage).then(function(){
             HomePage.careers.click();
         })
         Careers.locations.getText().then(function (locations) {
-            console.log(locations);
+            console.log(locations)
         })
 
     });
+
+    it('should click Arlinton and corfirm Google maps', function() { 
+
+        browser.executeScript('arguments[0].scrollIntoView();',HomePage.bottomPage).then(function(){
+            HomePage.careers.click();
+        });
+
+        browser.executeScript('arguments[0].scrollIntoView();',Careers.officeLocations).then(function(){
+            Careers.virginia.click();
+        });
+        
+        var ids = browser.driver.getAllWindowHandles();
+        ids.then(function (handles) {
+        var main = handles[0];
+        var maps = handles[1];
+        
+        // Change to the maps
+        browser.driver.switchTo().window(maps);
+        browser.sleep(5000);
+        })
+
+    });
+
+        
     
 });
